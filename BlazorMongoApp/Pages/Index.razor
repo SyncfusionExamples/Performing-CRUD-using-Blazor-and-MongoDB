@@ -1,0 +1,20 @@
+﻿@page "/"
+@using BlazorMongoApp.Models
+@using Syncfusion.Blazor;
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids;
+
+<PageTitle>Index</PageTitle>
+
+<h1>Blazor Server app + MongoDB</h1>
+
+<SfGrid TValue="Order" AllowPaging="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="EditMode.Dialog"></GridEditSettings>
+<SfDataManager Url="api/Order" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+<GridColumns>
+        <GridColumn Field="Id" IsPrimaryKey="true" IsIdentity="true" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field="CustomerName" Width="120"></GridColumn>
+        <GridColumn Field="Freight" Width="120"></GridColumn>
+        <GridColumn Field="ShipCountry" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
